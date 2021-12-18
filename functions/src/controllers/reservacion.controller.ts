@@ -6,7 +6,7 @@ import { Respuesta } from "../models/respuesta";
 export async function createReservacion(req: Request, res: Response) {           
     try{                    
         const newReservacion = Reservacion(req.body);
-        newReservacion.fechaCreacion =  new Date().toISOString();
+        newReservacion.horario =  new Date().toISOString();
         const ReservacionAdded = await db.collection("Reservacion").add(newReservacion);                            
         return res.status(201).json(Respuesta('Reservacion agregada', `La Reservacion fue agregada correctamente con el id ${ReservacionAdded.id}`, newReservacion));
     }
